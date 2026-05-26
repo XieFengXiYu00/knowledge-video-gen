@@ -1,5 +1,23 @@
 # 知识型讲解视频生成工程
 
+## 快速预览（本地运行）
+
+```bash
+# 1. 克隆代码
+git clone https://github.com/XieFengXiYu00/knowledge-video-gen.git
+cd knowledge-video-gen/my-topic/presentation
+
+# 2. 安装依赖
+npm install
+
+# 3. 启动
+npm run dev
+```
+
+浏览器打开 `http://localhost:5174/` 即可查看演示，音频已内置，无需额外配置。
+
+---
+
 把一篇文章或口播稿，做成「看起来像视频」的点击驱动 16:9 网页演示，录屏即成视频。
 
 基于 [ConardLi/garden-skills](https://github.com/ConardLi/garden-skills) 的 `web-video-presentation` skill。
