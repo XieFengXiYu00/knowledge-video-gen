@@ -1,0 +1,332 @@
+/* ── EuropeJapan.css · 06-europe-japan · prefix: .ej- ── */
+
+.ej-root { position: absolute; inset: 0; }
+.ej-label { margin: 0 0 24px; }
+
+/* ── step 0: 创新 vs 监管 ── */
+.ej-s0 { display: flex; align-items: center; justify-content: center; }
+
+.ej-s0-inner {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+.ej-s0-balance {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.ej-s0-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 40px 24px;
+  border: 1px solid var(--rule);
+  text-align: center;
+  opacity: 0;
+}
+
+.ej-s0-side.is-in {
+  animation: ej-side-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes ej-side-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.ej-s0-icon {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.ej-s0-title {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ej-s0-desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+.ej-s0-regulation { border-color: var(--accent); }
+.ej-s0-regulation .ej-s0-title { color: var(--accent); }
+
+.ej-s0-vs {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 600ms var(--ease-quart) 200ms;
+}
+
+.ej-s0-vs.is-in { opacity: 1; }
+
+.ej-s0-vs-text {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--text-faint);
+}
+
+.ej-s0-quote {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 56px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* ── step 1: 法规卡片 ── */
+.ej-s1 { display: flex; flex-direction: column; justify-content: center; }
+
+.ej-reg-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ej-reg-card {
+  padding: 28px 32px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.ej-reg-card.is-in {
+  animation: ej-card-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes ej-card-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ej-reg-header {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.ej-reg-name {
+  font-family: var(--font-display-en);
+  font-size: 48px;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.ej-reg-year {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+.ej-reg-scope {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.ej-reg-impact {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+/* ── step 2: Mistral ── */
+.ej-s2 { display: flex; flex-direction: column; justify-content: center; }
+
+.ej-s2-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.ej-s2-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.ej-s2-company {
+  font-family: var(--font-display-en);
+  font-size: 56px;
+  font-style: italic;
+  color: var(--text);
+  letter-spacing: -0.025em;
+}
+
+.ej-s2-flag {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+}
+
+.ej-s2-facts { display: flex; flex-direction: column; }
+
+.ej-s2-fact {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+.ej-s2-fact.is-in {
+  animation: ej-fact-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes ej-fact-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.ej-s2-fact-k {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.ej-s2-fact-v {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text);
+}
+
+.ej-s2-verdict-wrap {
+  padding-top: 48px;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart) 400ms;
+}
+
+.ej-s2-verdict-wrap.is-in { opacity: 1; }
+
+.ej-s2-verdict {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 16px 0 0;
+}
+
+.ej-s2-soil {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-2);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── step 3: 日韩困境 ── */
+.ej-s3 { display: flex; align-items: center; justify-content: center; }
+
+.ej-s3-inner { width: 860px; display: flex; flex-direction: column; gap: 32px; }
+
+.ej-s3-headline {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 80px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.ej-s3-issues { display: flex; flex-direction: column; gap: 0; }
+
+.ej-s3-issue { opacity: 0; transform: translateX(-8px); }
+
+.ej-s3-issue.is-in {
+  animation: ej-fact-in 700ms var(--ease-quart) forwards;
+}
+
+.ej-s3-issue-content {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  padding: 18px 0;
+  gap: 24px;
+}
+
+.ej-s3-issue-title {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ej-s3-issue-detail {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+}
+
+/* ── step 4: 日韩策略 ── */
+.ej-s4 { display: flex; align-items: center; justify-content: center; }
+
+.ej-s4-inner {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ej-s4-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+.ej-s4-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.ej-s4-strategy {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.ej-s4-note {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart) 300ms;
+}
+
+.ej-s4-note.is-in { opacity: 1; }
+
+.ej-s4-warning {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+}

@@ -1,0 +1,312 @@
+/* ── GpuWall.css · 03-gpu-wall · prefix: .gw- ── */
+
+.gw-root { position: absolute; inset: 0; }
+.gw-label { margin: 0 0 16px; }
+
+/* ── step 0: 成本阶梯 ── */
+.gw-s0 { display: flex; flex-direction: column; justify-content: center; }
+
+.gw-wall-title {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 88px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.025em;
+  line-height: 1;
+}
+
+.gw-sub {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-mute);
+  margin: 0 0 32px;
+}
+
+.gw-tiers { display: flex; flex-direction: column; gap: 0; }
+
+.gw-tier {
+  display: grid;
+  grid-template-columns: 140px 1fr 360px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+  gap: 24px;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.gw-tier.is-in {
+  animation: gw-tier-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes gw-tier-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.gw-tier-name {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--text-mute);
+}
+
+.gw-tier-cost {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.gw-tier-bar-wrap {
+  height: 12px;
+  background: var(--surface-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.gw-tier-bar {
+  position: absolute;
+  left: 0; top: 0; height: 100%;
+  background: var(--accent);
+  width: 0;
+  transition: width 1000ms var(--ease-quart);
+}
+
+.gw-tier-bar.is-in { width: var(--bar-w, 0%); }
+
+/* ── step 1: 制造商 ── */
+.gw-s1 { display: flex; flex-direction: column; justify-content: center; }
+
+.gw-mfr-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+.gw-mfr-wrap.is-in { opacity: 1; }
+
+.gw-mfr-count {
+  font-size: 160px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.gw-mfr-sub {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: var(--text-2);
+  margin: 0;
+}
+
+.gw-mfr-list { display: flex; flex-direction: column; }
+
+.gw-mfr-row {
+  display: grid;
+  grid-template-columns: 140px 200px 100px 1fr;
+  align-items: center;
+  padding: 20px 0;
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.gw-mfr-row.is-in {
+  animation: gw-row-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes gw-row-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.gw-mfr-name {
+  font-family: var(--font-display-en);
+  font-size: 40px;
+  font-style: italic;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.gw-mfr-product {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+}
+
+.gw-mfr-share {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.gw-mfr-note {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-faint);
+}
+
+.gw-mfr-footer {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  color: var(--text-mute);
+  margin: 20px 0 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart) 600ms;
+}
+
+.gw-mfr-footer.is-in { opacity: 1; }
+
+/* ── step 2: H100 分配 ── */
+.gw-s2 { display: flex; flex-direction: column; justify-content: center; }
+
+.gw-dist-list { display: flex; flex-direction: column; gap: 32px; }
+
+.gw-dist-row { display: flex; flex-direction: column; gap: 8px; }
+
+.gw-dist-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.gw-dist-region {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-2);
+  width: 160px;
+}
+
+.gw-dist-accent { color: var(--accent); }
+
+.gw-dist-pct {
+  font-size: 64px;
+  color: var(--text);
+  line-height: 1;
+}
+
+.gw-dist-track {
+  height: 16px;
+  background: var(--surface-3);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.gw-dist-bar {
+  position: absolute;
+  left: 0; top: 0; height: 100%;
+  background: var(--text-faint);
+  width: 0;
+  transition: width 1200ms var(--ease-quart);
+}
+
+.gw-dist-bar.is-in { width: var(--bar-w, 0%); }
+.gw-dist-bar-accent { background: var(--accent); }
+
+.gw-dist-note {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+/* ── step 3: 冲击对比 + 图片 ── */
+.gw-s3 { display: flex; flex-direction: column; justify-content: center; }
+
+.gw-s3-split {
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 64px;
+  align-items: center;
+}
+
+.gw-s3-compare {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin: 24px 0 32px;
+}
+
+.gw-s3-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 32px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.gw-s3-card.is-in {
+  animation: gw-card-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes gw-card-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.gw-s3-card-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.gw-s3-card-value {
+  font-family: var(--font-display-en);
+  font-size: 48px;
+  font-style: italic;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.gw-s3-card-b .gw-s3-card-value { color: var(--accent); }
+
+.gw-s3-vs {
+  font-family: var(--font-display-en);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--text-faint);
+}
+
+.gw-s3-verdict {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.gw-s3-right {
+  opacity: 0;
+  transition: opacity 900ms var(--ease-quart) 300ms;
+}
+
+.gw-s3-right.is-in { opacity: 1; }
+
+.gw-s3-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+}
+
+.gw-s3-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 8px 0 0;
+  text-align: center;
+}

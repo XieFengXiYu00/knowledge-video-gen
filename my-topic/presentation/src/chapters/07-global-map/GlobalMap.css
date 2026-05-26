@@ -1,0 +1,163 @@
+/* ── GlobalMap.css · 07-global-map · prefix: .gm- ── */
+
+.gm-root { position: absolute; inset: 0; }
+.gm-label { margin: 0 0 20px; }
+
+/* shared strategy card */
+.gm-strategy-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.gm-strategy-card.is-in {
+  animation: gm-card-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes gm-card-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.gm-card-num {
+  font-family: var(--font-display-en);
+  font-size: 64px;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.gm-card-type {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.gm-card-reps {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+}
+
+.gm-card-desc {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-2);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}
+
+/* ── step 0: 标题 ── */
+.gm-s0 { display: flex; align-items: center; justify-content: center; }
+
+.gm-s0-inner {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.gm-s0-num {
+  font-size: 240px;
+  color: var(--text);
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+.gm-s0-num.is-in { opacity: 1; }
+
+.gm-s0-sub {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text-2);
+  margin: 0;
+}
+
+.gm-s0-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+/* ── step 1: 两张策略卡 ── */
+.gm-s1 { display: flex; flex-direction: column; justify-content: center; }
+
+.gm-cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* ── step 2 & 3: 单张大卡 ── */
+.gm-s2, .gm-s3 { display: flex; align-items: center; justify-content: center; }
+
+.gm-s2-inner, .gm-s3-inner { width: 760px; }
+
+.gm-s2-card, .gm-s3-card { animation-delay: 0ms; }
+
+.gm-s2-example, .gm-s3-note {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+.gm-s2-example.is-in, .gm-s3-note.is-in { opacity: 1; }
+
+/* ── step 4: 结论 ── */
+.gm-s4 { display: flex; align-items: center; justify-content: center; }
+
+.gm-s4-inner {
+  width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.gm-s4-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+.gm-s4-two-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 12px 0;
+}
+
+.gm-s4-ok {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 56px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.gm-s4-but {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+.gm-s4-but.is-in { opacity: 1; }

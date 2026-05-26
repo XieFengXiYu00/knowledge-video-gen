@@ -1,0 +1,206 @@
+/* ── DataWall.css · 04-data-wall · prefix: .dw- ── */
+
+.dw-root { position: absolute; inset: 0; }
+.dw-label { margin: 0 0 28px; }
+
+/* ── step 0: 语言分布条形图 ── */
+.dw-s0 { display: flex; flex-direction: column; justify-content: center; }
+
+.dw-bars { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+
+.dw-bar-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 60px;
+  align-items: center;
+  gap: 16px;
+}
+
+.dw-lang {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  color: var(--text-2);
+  text-align: right;
+}
+
+.dw-track {
+  height: 14px;
+  background: var(--surface-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.dw-bar {
+  position: absolute;
+  left: 0; top: 0; height: 100%;
+  background: var(--text-faint);
+  width: 0;
+  transition: width 1000ms var(--ease-quart);
+}
+
+.dw-bar.is-in { width: var(--bar-w, 0%); }
+.dw-bar-key { background: var(--accent); }
+
+.dw-pct {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-faint);
+  text-align: right;
+}
+
+.dw-pct-key { color: var(--accent); font-weight: 700; }
+
+.dw-sum {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart) 900ms;
+}
+
+.dw-sum.is-in { opacity: 1; }
+
+.dw-sum strong { color: var(--accent); }
+
+/* ── step 1: 能力对比 ── */
+.dw-s1 { display: flex; align-items: center; justify-content: center; }
+
+.dw-s1-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 900px;
+}
+
+.dw-s1-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+.dw-s1-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.dw-s1-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.dw-s1-card.is-in {
+  animation: dw-card-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes dw-card-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dw-s1-card-lang {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.dw-s1-card-desc {
+  font-family: var(--font-body);
+  font-size: 22px;
+  color: var(--text-mute);
+}
+
+.dw-s1-bar {
+  height: 8px;
+  background: var(--surface-3);
+}
+
+.dw-s1-bar-full { background: var(--accent); width: 100%; }
+.dw-s1-bar-partial { background: var(--text-faint); width: 40%; }
+
+/* ── step 2: 日韩 ── */
+.dw-s2 { display: flex; flex-direction: column; justify-content: center; }
+
+.dw-s2-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 8px;
+}
+
+.dw-s2-num {
+  font-size: 140px;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+.dw-s2-num.is-in { opacity: 1; }
+
+.dw-s2-context {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--text-mute);
+  margin: 0;
+  max-width: 400px;
+}
+
+.dw-s2-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+.dw-s2-table { display: flex; flex-direction: column; gap: 0; margin-bottom: 36px; }
+
+.dw-s2-row {
+  display: grid;
+  grid-template-columns: 100px 120px 1fr;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+.dw-s2-row.is-in {
+  animation: dw-row-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes dw-row-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.dw-s2-lang {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.dw-s2-pct {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--text-mute);
+}
+
+.dw-s2-verdict {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+}
+
+.dw-s2-note {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  color: var(--text-2);
+  margin: 0;
+}

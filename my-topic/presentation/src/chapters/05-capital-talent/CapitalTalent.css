@@ -1,0 +1,357 @@
+/* ── CapitalTalent.css · 05-capital-talent · prefix: .ct- ── */
+
+.ct-root { position: absolute; inset: 0; }
+.ct-label { margin: 0 0 20px; }
+
+/* ── step 0: 成本分解 ── */
+.ct-s0 { display: flex; flex-direction: column; justify-content: center; }
+
+.ct-s0-split {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 64px;
+  align-items: start;
+}
+
+.ct-s0-intro {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-2);
+  margin: 0 0 8px;
+}
+
+.ct-s0-costs { display: flex; flex-direction: column; }
+
+.ct-s0-row {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+.ct-s0-row.is-in {
+  animation: ct-row-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes ct-row-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.ct-s0-item {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+}
+
+.ct-s0-cost {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: right;
+}
+
+.ct-s0-total {
+  border: 1px solid var(--rule);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ct-s0-total-num {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart) 500ms;
+}
+
+.ct-s0-total-num.is-in { opacity: 1; }
+
+.ct-gt {
+  font-family: var(--font-display-en);
+  font-size: 56px;
+  font-style: italic;
+  color: var(--accent);
+}
+
+.ct-big {
+  font-size: 120px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.ct-unit {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  color: var(--text-2);
+  margin-left: 4px;
+}
+
+.ct-s0-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin: 0;
+}
+
+/* ── step 1: 融资条形 ── */
+.ct-s1 { display: flex; flex-direction: column; justify-content: center; }
+
+.ct-fund-list { display: flex; flex-direction: column; }
+
+.ct-fund-content {
+  display: grid;
+  grid-template-columns: 200px 200px 1fr;
+  align-items: center;
+  padding: 18px 0;
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.ct-fund-content.is-in {
+  animation: ct-row-in 600ms var(--ease-quart) forwards;
+}
+
+.ct-fund-name {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--text);
+  white-space: pre;
+}
+
+.ct-fund-amount {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.ct-fund-track {
+  height: 12px;
+  background: var(--surface-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.ct-fund-bar {
+  position: absolute;
+  left: 0; top: 0; height: 100%;
+  background: var(--accent);
+  width: 0;
+  transition: width 1000ms var(--ease-quart);
+}
+
+.ct-fund-bar.is-in { width: var(--bar-w, 0%); }
+
+/* ── step 2: VC 差距 ── */
+.ct-s2 { display: flex; align-items: center; justify-content: center; }
+
+.ct-s2-inner {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.ct-s2-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.ct-s2-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  border: 1px solid var(--rule);
+  gap: 12px;
+  opacity: 0;
+}
+
+.ct-s2-block.is-in {
+  animation: ct-block-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes ct-block-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.ct-s2-us { border-color: var(--accent); }
+
+.ct-s2-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+.ct-s2-scale {
+  font-family: var(--font-display-en);
+  font-size: 80px;
+  font-style: italic;
+  line-height: 1;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+.ct-s2-us .ct-s2-scale { color: var(--accent); }
+
+.ct-s2-verdict {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  color: var(--text-2);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── step 3: 论文条形图（垂直）── */
+.ct-s3 { display: flex; flex-direction: column; justify-content: center; }
+
+.ct-paper-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  height: 320px;
+  margin: 0 0 20px;
+}
+
+.ct-paper-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.ct-paper-track {
+  width: 100%;
+  height: 240px;
+  display: flex;
+  align-items: flex-end;
+  background: var(--surface-3);
+  position: relative;
+}
+
+.ct-paper-bar {
+  width: 100%;
+  height: 0;
+  background: var(--text-faint);
+  transition: height 1000ms var(--ease-quart);
+  position: absolute;
+  bottom: 0;
+}
+
+.ct-paper-bar.is-in { height: var(--bar-h, 0%); }
+.ct-paper-accent { background: var(--accent); }
+
+.ct-paper-pct {
+  font-family: var(--font-display-en);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--text-mute);
+}
+
+.ct-paper-accent-text { color: var(--accent); }
+
+.ct-paper-region {
+  font-family: var(--font-display-cn);
+  font-size: 22px;
+  color: var(--text-2);
+}
+
+.ct-s3-note {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart) 800ms;
+}
+
+.ct-s3-note.is-in { opacity: 1; }
+
+/* ── step 4: 人才流向 ── */
+.ct-s4 { display: flex; flex-direction: column; justify-content: center; }
+
+.ct-flow-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 16px;
+}
+
+.ct-flow-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+.ct-flow-row.is-in {
+  animation: ct-row-in 700ms var(--ease-quart) forwards;
+}
+
+.ct-flow-from {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-2);
+  width: 300px;
+}
+
+.ct-flow-arrow {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.ct-flow-line {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.ct-flow-arrowhead {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  color: var(--accent);
+}
+
+.ct-flow-to {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  width: 260px;
+  text-align: right;
+}
+
+.ct-s4-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+.ct-s4-verdict {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: var(--text);
+  margin: 0;
+}

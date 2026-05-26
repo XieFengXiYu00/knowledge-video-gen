@@ -1,0 +1,259 @@
+/* ── OsTheory.css · 08-os-theory · prefix: .ot- ── */
+
+.ot-root { position: absolute; inset: 0; }
+.ot-label { margin: 0 0 28px; }
+
+/* ── step 0: 类比 ── */
+.ot-s0 { display: flex; flex-direction: column; justify-content: center; }
+
+.ot-s0-examples {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.ot-s0-platform {
+  padding: 28px 32px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.ot-s0-platform.is-in {
+  animation: ot-fade-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes ot-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ot-s0-plat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.ot-s0-plat-name {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ot-s0-plat-count {
+  font-family: var(--font-display-en);
+  font-size: 24px;
+  font-style: italic;
+  color: var(--text-mute);
+}
+
+.ot-s0-winners {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ot-s0-winner {
+  font-family: var(--font-display-en);
+  font-size: 26px;
+  font-style: italic;
+  color: var(--text-2);
+  letter-spacing: -0.01em;
+}
+
+.ot-s0-pattern {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── step 1: 重演箭头 ── */
+.ot-s1 { display: flex; align-items: center; justify-content: center; }
+
+.ot-s1-inner {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.ot-s1-arrow-wrap {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ot-s1-from, .ot-s1-to {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 32px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.ot-s1-from.is-in, .ot-s1-to.is-in {
+  animation: ot-fade-in 700ms var(--ease-quart) forwards;
+}
+
+.ot-s1-label-sm { margin: 0; }
+
+.ot-s1-text {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--text-2);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.ot-s1-text-accent { color: var(--accent); }
+
+.ot-s1-arrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 500ms var(--ease-quart) 200ms;
+}
+
+.ot-s1-arrow.is-in { opacity: 1; }
+
+.ot-s1-arrow-line {
+  width: 60px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.ot-s1-arrow-head {
+  font-family: var(--font-display-en);
+  font-size: 32px;
+  color: var(--accent);
+}
+
+.ot-s1-sub {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+.ot-s1-sub.is-in { opacity: 1; }
+
+/* ── step 2: 终局格局 ── */
+.ot-s2 { display: flex; flex-direction: column; justify-content: center; }
+
+.ot-s2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.ot-s2-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px 28px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.ot-s2-cell.is-in {
+  animation: ot-fade-in 600ms var(--ease-quart) forwards;
+}
+
+.ot-s2-leading { border-color: var(--accent); }
+
+.ot-s2-region {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ot-s2-count {
+  font-family: var(--font-display-en);
+  font-size: 40px;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.ot-s2-niche .ot-s2-count, .ot-s2-consumer .ot-s2-count { color: var(--text-mute); }
+
+.ot-s2-players {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-mute);
+}
+
+/* ── step 3: 三个飞轮 ── */
+.ot-s3 { display: flex; flex-direction: column; justify-content: center; }
+
+.ot-s3-list { display: flex; flex-direction: column; margin-bottom: 28px; }
+
+.ot-s3-row {
+  display: grid;
+  grid-template-columns: 56px 200px 1fr 48px;
+  align-items: center;
+  padding: 20px 0;
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.ot-s3-row.is-in {
+  animation: ot-row-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes ot-row-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.ot-s3-num {
+  font-family: var(--font-display-en);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+
+.ot-s3-name {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ot-s3-desc {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+}
+
+.ot-s3-spin {
+  font-family: var(--font-display-en);
+  font-size: 28px;
+  color: var(--accent);
+  text-align: center;
+  animation: ot-spin 3s linear infinite;
+}
+
+@keyframes ot-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.ot-s3-verdict {
+  font-family: var(--font-display-cn);
+  font-size: 26px;
+  color: var(--text);
+  margin: 0;
+}

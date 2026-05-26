@@ -1,0 +1,230 @@
+/* ── Takeaway.css · 09-takeaway · prefix: .tw- ── */
+
+.tw-root { position: absolute; inset: 0; }
+.tw-label { margin: 0 0 24px; }
+
+/* ── step 0: 核心金句 ── */
+.tw-s0 { display: flex; align-items: center; justify-content: center; }
+
+.tw-s0-inner {
+  width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tw-s0-pre { margin: 0; }
+
+.tw-s0-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+.tw-s0-slogan {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 76px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.tw-s0-slogan-accent { color: var(--accent); }
+
+/* ── step 1: 应用层 ── */
+.tw-s1 { display: flex; flex-direction: column; justify-content: center; }
+
+.tw-s1-headline {
+  font-family: var(--font-display-cn);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 36px;
+}
+
+.tw-s1-domains {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.tw-s1-domain {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  padding: 28px 24px;
+  border: 1px solid var(--rule);
+  text-align: center;
+  opacity: 0;
+}
+
+.tw-s1-domain.is-in {
+  animation: tw-domain-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes tw-domain-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.tw-s1-note {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+  opacity: 0;
+  transition: opacity 700ms var(--ease-quart);
+}
+
+.tw-s1-note.is-in { opacity: 1; }
+
+/* ── step 2: 差异化 + 合规 ── */
+.tw-s2 { display: flex; flex-direction: column; justify-content: center; }
+
+.tw-s2-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.tw-s2-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 32px;
+  border: 1px solid var(--rule);
+  opacity: 0;
+}
+
+.tw-s2-card.is-in {
+  animation: tw-card-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes tw-card-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tw-s2-num {
+  font-family: var(--font-display-en);
+  font-size: 64px;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.tw-s2-title {
+  font-family: var(--font-display-cn);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tw-s2-body {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-2);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── step 3: 五要素表格 ── */
+.tw-s3 { display: flex; flex-direction: column; justify-content: center; }
+
+.tw-s3-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tw-th {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 2px solid var(--rule);
+}
+
+.tw-th-factor { text-align: left; }
+
+.tw-s3-row {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+
+.tw-s3-row.is-in {
+  animation: tw-row-in 600ms var(--ease-quart) forwards;
+}
+
+@keyframes tw-row-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.tw-td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tw-td-name {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.tw-td-check {
+  text-align: center;
+  font-size: 24px;
+}
+
+.tw-td-yes   { color: var(--accent); }
+.tw-td-half  { color: var(--text-mute); }
+.tw-td-no    { color: var(--text-faint); }
+
+/* ── step 4: 结尾 ── */
+.tw-s4 { display: flex; align-items: center; justify-content: center; }
+
+.tw-s4-inner {
+  width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tw-s4-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+}
+
+.tw-s4-main {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 72px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.tw-s4-cta {
+  font-family: var(--font-display-cn);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+  opacity: 0;
+  transition: opacity 800ms var(--ease-quart) 1000ms;
+  border-left: 3px solid var(--accent);
+  padding-left: 20px;
+}
+
+.tw-s4-cta.is-in { opacity: 1; }

@@ -1,0 +1,289 @@
+/* ─────────────────────────────────────────────────────────────────
+ * ColdOpen.css  ·  Chapter 01-cold-open
+ * CSS prefix: .co-
+ * Theme: newsroom (cream paper · ink-black serif · banner red)
+ * ───────────────────────────────────────────────────────────────── */
+
+/* ── shared root ── */
+.co-root {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── shared thin accent bar (top of some steps) ── */
+.co-accent-bar {
+  width: 64px;
+  height: 3px;
+  background: var(--accent);
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * Step 0 — 悬念大问句
+ * Newspaper masthead style: two hairline rules framing a big
+ * italic question in Playfair Display.
+ * ───────────────────────────────────────────────────────────────── */
+.co-s0 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.co-s0-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  width: 840px;
+  text-align: center;
+}
+
+.co-s0-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+  border: none;
+}
+
+.co-s0-kicker {
+  margin: 0;
+  color: var(--text-mute);
+  letter-spacing: 0.2em;
+}
+
+.co-s0-headline {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 100px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.05;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.025em;
+  /* Let the top rule-grow start before headline reveals */
+  transition-delay: 200ms;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * Step 1 — 品牌阵容
+ * Broadsheet lineup: each AI brand as an editorial row,
+ * country origin badge in accent red on the right.
+ * ───────────────────────────────────────────────────────────────── */
+.co-s1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.co-s1-label {
+  margin: 0 0 32px;
+  letter-spacing: 0.2em;
+}
+
+.co-s1-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.co-s1-row {
+  display: grid;
+  grid-template-columns: 1fr 260px 80px;
+  align-items: center;
+  padding: 18px 0;
+  gap: 24px;
+  opacity: 0;
+  transform: translateX(-16px);
+}
+
+.co-s1-row.is-in {
+  animation: co-row-in 700ms var(--ease-quart) forwards;
+}
+
+@keyframes co-row-in {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.co-s1-name {
+  font-family: var(--font-display-en);
+  font-size: 54px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.co-s1-company {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+  align-self: center;
+}
+
+.co-s1-origin {
+  font-family: var(--font-display-cn);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: right;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.co-s1-footer {
+  font-family: var(--font-display-cn);
+  font-size: 28px;
+  color: var(--text-2);
+  margin: 36px 0 0;
+  text-align: center;
+  line-height: 1.4;
+  /* Delay until after the last brand row finishes (4 × 150ms stagger + ~700ms anim) */
+  transition-delay: 750ms;
+}
+
+.co-s1-footer strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * Step 2 — 国家问号
+ * 2×2 grid of "ghosted" country names each stamped with a big
+ * red italic question mark. Visual drama: they want to be here
+ * but can't.
+ * ───────────────────────────────────────────────────────────────── */
+.co-s2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.co-s2-kicker {
+  margin: 0 0 36px;
+  letter-spacing: 0.2em;
+}
+
+.co-s2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.co-s2-cell {
+  border: 1px var(--rule-style) var(--rule);
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0;
+}
+
+.co-s2-cell.is-in {
+  animation: co-cell-in 650ms var(--ease-quart) forwards;
+}
+
+@keyframes co-cell-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.co-s2-country {
+  font-family: var(--font-display-cn);
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+.co-s2-qmark {
+  font-family: var(--font-display-en);
+  font-size: 96px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  opacity: 0.85;
+}
+
+.co-s2-sub {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+  opacity: 0;
+  transition: opacity 900ms var(--ease-quart) 480ms;
+}
+
+.co-s2-sub.is-in {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+ * Step 3 — 金句 pull-quote
+ * Classic broadsheet pull-quote: two hairline rules flanking a
+ * large italic blockquote with a decorative opening quotation mark.
+ * ───────────────────────────────────────────────────────────────── */
+.co-s3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.co-s3-rule {
+  width: 100%;
+  height: var(--rule-w, 1px);
+  background: var(--rule);
+  border: none;
+}
+
+.co-s3-body {
+  position: relative;
+  padding: 20px 0 20px 96px;
+}
+
+.co-s3-openquote {
+  position: absolute;
+  left: 0;
+  top: -10px;
+  font-family: var(--font-display-en);
+  font-size: 180px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.co-s3-quote {
+  font-family: var(--font-display-en), var(--font-display-cn);
+  font-size: 60px;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.2;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.co-s3-attr {
+  font-family: var(--font-body);
+  font-size: 24px;
+  color: var(--text-mute);
+  letter-spacing: 0.04em;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 900ms var(--ease-quart) 600ms;
+}
+
+.co-s3-attr.is-in {
+  opacity: 1;
+}

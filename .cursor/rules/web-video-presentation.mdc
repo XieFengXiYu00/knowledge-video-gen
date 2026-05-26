@@ -1,0 +1,50 @@
+---
+description: 知识型讲解视频生成工程。当用户要求制作视频、把文章做成视频、生成口播视频、或提到 video/视频/口播/讲解 时自动激活。
+globs:
+  - "**/*.md"
+  - "**/*.tsx"
+  - "**/*.ts"
+  - "**/*.css"
+alwaysApply: false
+---
+
+# 知识型讲解视频生成 Skill
+
+本工程使用 `web-video-presentation` skill 将文章或口播稿制作成可录屏的动态网页演示，最终录屏产出视频。
+
+## 必读 Skill 文件
+
+在开始任何视频制作任务前，必须读取以下文件（按阶段读取，不要一次全读）：
+
+| 阶段 | 必读文件 |
+|---|---|
+| 开始 / Phase 1 内容编写 | `skill/SKILL.md`（工作流总览）、`skill/references/SCRIPT-STYLE.md`、`skill/references/OUTLINE-FORMAT.md` |
+| Phase 2 章节开发（每章必读） | `skill/references/CHAPTER-CRAFT.md` + 当前章节 outline 段落 + 对应 `skill/themes/<id>/theme.json` |
+| 选主题 | 读取所有 `skill/themes/*/theme.json` 的 `nameZh`/`descriptionZh`/`bestFor` |
+| Phase 3 音频合成 | `skill/references/AUDIO.md` |
+| Phase 4 录屏 | `skill/references/RECORDING.md` |
+
+## 工作流入口
+
+1. **用户给了文章/稿子** → 立即读取 `skill/SKILL.md` 启动 Phase 1
+2. **用户说"帮我做个X主题视频"但没给内容** → 反问：请先提供文章或口播稿素材
+3. **用户在某章节卡住** → 读取 `skill/references/CHAPTER-CRAFT.md` Part 8 反馈速查
+
+## 关键约定
+
+- 工作目录：在 `knowledge-video-gen/` 下为每个视频创建独立子目录（如 `my-video/`）
+- 脚手架命令：`bash skill/scripts/scaffold.sh <视频目录>/presentation --theme=<主题id>`
+- 每次开始新视频前运行 `scripts/new-video.sh <视频名>` 初始化目录结构
+
+## 十条核心原则（速查）
+
+1. 16:9 固定舞台（1920×1080 + transform scale）
+2. 全局 step 计数器（章节是 step 的纯函数，无定时器）
+3. 每步独占整屏
+4. 口播节拍 = step（一节拍一步一想法）
+5. 进度条 / 翻页器默认隐藏（opacity 0）
+6. 舞台无 chrome（无 header/footer/页码）
+7. **内容驱动动画**（先找内在动作，再入场动画兜底）
+8. 多点逐个揭示（1项 = 1step，禁止同步展示N项）
+9. 整片同一主题（颜色/字体走 token）
+10. 双源原则（script 定节拍，article 定画面密度）
