@@ -3,8 +3,7 @@
 ## 快速预览（本地运行）
 
 ```bash
-# 1. 克隆代码
-git clone https://github.com/XieFengXiYu00/knowledge-video-gen.git
+# 1. 路径
 cd knowledge-video-gen/my-topic/presentation
 
 # 2. 安装依赖
