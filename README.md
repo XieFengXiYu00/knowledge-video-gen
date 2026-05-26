@@ -14,7 +14,7 @@ npm install
 npm run dev
 ```
 
-浏览器打开 `http://localhost:5174/` 即可查看演示，音频已内置，无需额外配置。
+浏览器打开 `http://localhost:5174/?auto=1` 即可查看演示，音频已内置，无需额外配置。
 
 
 ## 工作原理
